@@ -10,6 +10,7 @@ import {
   ClipProject,
   QCReport,
   ActiveAnalysisStatus,
+  getOAuthConnectUrl,
 } from "@/lib/api";
 
 interface StudioContextType {
@@ -287,7 +288,7 @@ export function StudioProvider({ children }: { children: ReactNode }) {
   };
 
   const handleConnectOAuth = () => {
-    window.location.href = "http://127.0.0.1:8000/api/v1/channels/oauth/connect";
+    window.location.href = getOAuthConnectUrl();
   };
 
   const handleImportYtVideo = async (videoUrl: string): Promise<SourceVideo | null> => {

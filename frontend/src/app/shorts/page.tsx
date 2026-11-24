@@ -9,7 +9,7 @@ import {
   Send,
 } from "lucide-react";
 import { useStudio } from "@/context/StudioContext";
-import { api } from "@/lib/api";
+import { api, getThumbnailUrl, getShortVideoUrl } from "@/lib/api";
 
 function ShortsStudioContent() {
   const router = useRouter();
@@ -114,7 +114,7 @@ function ShortsStudioContent() {
                   <div className="flex gap-3 items-center">
                     <div className="w-12 h-16 bg-zinc-950 rounded-lg overflow-hidden border border-zinc-800 shrink-0 relative flex items-center justify-center">
                       <img
-                        src={`http://127.0.0.1:8000/static/thumbnails/${s.id}.jpg`}
+                        src={getThumbnailUrl(s.id)}
                         alt={s.title}
                         className="w-full h-full object-cover relative z-10"
                         onError={(e) => {
@@ -167,7 +167,7 @@ function ShortsStudioContent() {
                   {selectedShort.rendered_video_path ? (
                     <video
                       key={selectedShort.id}
-                      src={`http://127.0.0.1:8000/static/shorts/${selectedShort.id}.mp4`}
+                      src={getShortVideoUrl(selectedShort.id)}
                       controls
                       autoPlay
                       className="w-full h-full object-contain"
